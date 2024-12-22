@@ -1,11 +1,23 @@
-  name: Deploy to DigitalOcean
-  uses: appleboy/ssh-action@v0.1.8
-  with:
-    host: 147.182.207.129
-    username: root
-    key: ${{ secrets.SSH_PRIVATE_KEY }}
-    script: |
-      cd /root/ecommerce-fullstack-test
-      git pull origin main
-      docker compose down
-      docker compose up -d
+name: Deploy to DigitalOcean
+
+on:
+  push:
+    branches:
+      - main # Trigger workflow on pushes to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to DigitalOcean
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: 147.182.207.129
+          username: root
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /root/ecommerce-fullstack-test
+            git pull origin main
+            docker compose down
+            docker compose up -d
