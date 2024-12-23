@@ -33,45 +33,27 @@ services:
 # DATABASE (MySQL)
 ####################################################################################################
 
-  db:
-  image: mysql:8.0
-  container_name: mysql-rifive-laravel
-  restart: unless-stopped
-  ports:
-    - "3306:3306"
-  environment:
-    MYSQL_DATABASE: ${DB_DATABASE}
-    MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-    MYSQL_USER: ${DB_USERNAME}
-    MYSQL_PASSWORD: ${DB_PASSWORD}
-  command: --lower_case_table_names=1
-  volumes:
-    - ./docker-compose/mysql/data:/var/lib/mysql
-    - ./docker-compose/mysql/logs:/var/log/mysql
-    - ./docker-compose/mysql/ql:/docker-entrypoint-initdb.d
-  networks:
-    - laravel
 
-#   db:
-#     image: mysql:8.0
-#     container_name: mysql-rifive-laravel
-#     restart: unless-stopped
-#     ports:
-#       - "3306:3306"
-#     environment:
-#       MYSQL_DATABASE: ${DB_DATABASE}
-#       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-#       MYSQL_PASSWORD: ${DB_PASSWORD}
-#       MYSQL_ROOT_USER: ${DB_USERNAME}
-#       SERVICE_TAGS: dev
-#       SERVICE_NAME: mysql
-#     command: --lower_case_table_names=2
-#     volumes:
-#       - ./docker-compose/mysql/data:/var/lib/mysql
-#       - ./docker-compose/mysql/logs:/var/log/mysql
-#       - ./docker-compose/mysql/ql:/docker-entrypoint-initdb.d
-#     networks:
-#       - laravel
+  db:
+    image: mysql:8.0
+    container_name: mysql-rifive-laravel
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_USER: ${DB_USERNAME}
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    command: --lower_case_table_names=1
+    volumes:
+      - ./docker-compose/mysql/data:/var/lib/mysql
+      - ./docker-compose/mysql/logs:/var/log/mysql
+      - ./docker-compose/mysql/ql:/docker-entrypoint-initdb.d
+    networks:
+      - laravel
 ####################################################################################################
 # Nginx
 ####################################################################################################
