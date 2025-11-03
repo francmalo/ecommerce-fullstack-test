@@ -15,6 +15,7 @@ Follow these steps to run the application on your local machine:
 
 **Steps**
 
+
 1. **Clone the Repository**: Clone the application repository from GitHub:
    ```bash
    git clone https://github.com/francmalo/ecommerce-fullstack-test
